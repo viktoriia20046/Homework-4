@@ -5,7 +5,7 @@ def total_salary(path):
     with open(path, 'r') as file:
        text = file.readlines()
 
-    total = 3
+    total = 0
     count = len(text)
 
 
@@ -24,21 +24,23 @@ print(f"Загальна сума заробітної плати: {total}, Се
 #2 Завдання
 
 def get_cats_info(path):
-   resalt = []
+   result = []
    
    with open(path, 'r') as fl:
       cat = fl.readline()
       while cat:
-        data_cat = cat.split()
+        data_cat = cat.strip().split(',')
+        data_cat[2] = data_cat[2].replace('\n', '')  # Видаляємо символ нового рядка
         dict_cat = dict(zip(['id', 'name', 'age'], data_cat))
-        resalt.append(dict_cat)
-        cat = fl.readline().strip()
+        result.append(dict_cat)
+        cat = fl.readline()
 
-      return  resalt 
+      return result
    
 path = 'b.txt'
 cats_info = get_cats_info(path)
 print(cats_info)
+
 
 
 #4 Завдання
